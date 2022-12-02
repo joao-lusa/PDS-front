@@ -1,6 +1,9 @@
 import axios from "axios";
+//prod
+//const url = "https://orcacando-exames-api.herokuapp.com/api/"
 
-const url = "https://orcacando-exames-api.herokuapp.com/api/"
+//local
+const url = "http://localhost:8090/api/"
 
 const axiosInstance = axios.create({
   baseURL: url
@@ -34,7 +37,9 @@ export const api = {
   },
   login(body) {
     return axios.post(
-      "https://orcacando-exames-api.herokuapp.com/api/funcionario/auth",
+      //prod
+      //"https://orcacando-exames-api.herokuapp.com/api/funcionario/auth",
+      "https://localhost/8090/api/funcionario/auth",
       body
     )
   },

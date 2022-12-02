@@ -21,7 +21,7 @@
                 <tr
                 v-for="exame in exames" :key="exame.id"
                 >
-                  <td>{{ exame.nome }}</td>
+                  <td class="p">{{ exame.nome }}</td>
                   <td>{{ `R$${exame.preco}` }}</td>
                   <td> 
                     <v-btn color="success" dark class="btn" @click.prevent="examePrecicar(exame.id)">
@@ -34,9 +34,9 @@
           </v-simple-table>
         </v-card>
       </v-row>
-        <v-container>
+        <v-container class="max-pagina">
           <v-row justify="center">
-            <v-col cols="8">
+            <v-col cols="6">
               <v-container class="max-width">
                 <v-pagination
                   v-model="page"
@@ -129,5 +129,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.p{
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.max-pagina{
+  max-width: 50%;
+}
+@media screen and (max-width: 502px){
+  .max-pagina{
+    max-width: none;
+}
+}
 </style>
