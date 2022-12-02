@@ -41,7 +41,7 @@ export const api = {
       "https://orcacando-exames-api.herokuapp.com/api/funcionario/auth",
       
       // local
-      // "https://localhost/8090/api/funcionario/auth",
+      // "http://localhost:8090/api/funcionario/auth",
       body
     )
   },

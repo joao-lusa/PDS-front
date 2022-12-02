@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-card height="385" width="500" color="#F5F2F2" elevation="5" class="card">
+      <v-card height="500" width="500" color="#F5F2F2" elevation="5" class="card">
         <v-simple-table>
         <template v-slot:default>
           <thead>
@@ -21,7 +21,7 @@
               <tr
               v-for="exame in exames" :key="exame.id"
               >
-                <td>{{ exame.nome }}</td>
+                <td class="p">{{ exame.nome }}</td>
                 <td>{{ `R$${exame.preco}` }}</td>
                 <td> 
                   <v-btn
@@ -115,6 +115,15 @@ export default {
 .btn{
   margin-right: 5px;
 }
+.p{
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pagina{
+  max-width: 50%;
+}
 @media screen and (max-width: 502px){
   .pagina{
     margin-top: 175px;
@@ -125,6 +134,9 @@ export default {
   } 
   .deletar{
     margin-bottom: 5px;
+  }
+  .pagina{
+    max-width: none;
   }
 }
 </style>
