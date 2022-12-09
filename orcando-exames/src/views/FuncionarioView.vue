@@ -1,22 +1,22 @@
 <template>
   <v-container fluid>
     <h1>Cadastre um novo funcionairo</h1>
-    <FuncionarioForm>
+    <FuncionarioFormEditar>
       <v-btn color="success" class="btn" @click="criarUsuario">
         Cadastrar
       </v-btn>
-    </FuncionarioForm>
+    </FuncionarioFormEditar>
     <ErroNotificacao :erros="erros"/>
   </v-container>
 </template>
 
 <script>
-import FuncionarioForm from "../components/FuncionarioForm.vue";
+import FuncionarioFormEditar from "../components/FuncionarioFormEditar.vue";
 
 export default {
   name: "FuncionarioView",
   components: {
-    FuncionarioForm,
+    FuncionarioFormEditar,
   },
   data(){
     return{
