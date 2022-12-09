@@ -67,11 +67,11 @@
                   v-for="exame in examesPrecifica" :key="exame.id"
                   >
                     <td>{{ exame.nome }}</td>
-                    <td>{{ `R$${exame.preco}.00` }}</td>
+                    <td>{{ `R$${exame.preco}` }}</td>
                   </tr>
                   <tr>
                     <td>Valor Total</td>
-                    <td>{{`R$${valorTotal}.00`}}</td>
+                    <td>{{`R$${valorTotal}`}}</td>
                   </tr>
                 </tbody>
               </template>
