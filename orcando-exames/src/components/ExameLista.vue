@@ -22,7 +22,7 @@
                 v-for="exame in exames" :key="exame.id"
                 >
                   <td class="p">{{ exame.nome }}</td>
-                  <td>{{ `R$${exame.preco}` }}</td>
+                  <td>{{ `${exame.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` }}</td>
                   <td> 
                     <v-btn color="success" dark class="btn" @click.prevent="examePrecicar(exame.id)">
                       Adicionar
@@ -67,11 +67,11 @@
                   v-for="exame in examesPrecifica" :key="exame.id"
                   >
                     <td>{{ exame.nome }}</td>
-                    <td>{{ `R$${exame.preco}` }}</td>
+                    <td>{{ `R$${exame.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` }}</td>
                   </tr>
                   <tr>
                     <td>Valor Total</td>
-                    <td>{{`R$${valorTotal}`}}</td>
+                    <td>{{`${valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}}</td>
                   </tr>
                 </tbody>
               </template>

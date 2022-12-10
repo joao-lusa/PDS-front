@@ -47,7 +47,7 @@ export default new Vuex.Store({
       })
     },
     criarUsuario(context, payload) {
-      context.commit("UPDATE_USUARIO", { id: payload.id });
+      context.commit("UPDATE_USUARIO", { id: payload.id});
       return api.post("/funcionario", payload);
     },
     logarUsuario(context, payload) {

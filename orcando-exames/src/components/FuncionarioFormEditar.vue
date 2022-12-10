@@ -54,7 +54,7 @@
                   required
                 ></v-text-field>
               </v-col>
-              <slot></slot>
+              <v-btn class="btn" color="#E7B126" dark @click.prevent="atualizarFuncionario">Editar</v-btn>
               <v-btn class="btn" color="red" dark @click.prevent="limparForm">Limpar</v-btn>
             </v-row>
           </v-container>
@@ -65,13 +65,15 @@
 
 <script>
 import { mapFields } from "@/helpers.js";
+import {api} from "@/services.js"
 
 export default {
   name:"FuncionarioFrom",
   data(){
     return {
       show1: false,
-      limpar: ""
+      limpar: "",
+      erros: [],
     } 
   },
   computed:{
@@ -96,12 +98,17 @@ export default {
       this.cpf = this.limpar
       this.email = this.limpar
       this.telefone = this.limpar
+    },
+    atualizarFuncionario(){
+      api.put(`/funcionario/${this.$store.state.usuario.id}`, this.$store.state.usuario).then(() =>{
+        this.$store.dispatch("getUsuario");
+        this.$router.push({name:"home"})
+      }).catch(erro => {
+        console.log(erro)
+        this.erros.push(erro.response.data.message)
+      });
     }
   },
-  created(){
-    this.senha = this.limpar
-    this.limparForm()
-  }
 }
 </script>
 

@@ -6,7 +6,7 @@
             <v-row>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="nome"
+                  v-model="usuario.nome"
                   :counter="10"
                   label="Nome Completo"
                   required
@@ -14,7 +14,7 @@
               </v-col>
                <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="login"
+                  v-model="usuario.login"
                   :counter="10"
                   label="Nome de login"
                   required
@@ -22,7 +22,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="senha"
+                  v-model="usuario.senha"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="show1 ? 'text' : 'password'"
                   label="Senha"
@@ -32,7 +32,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="cpf"
+                  v-model="usuario.cpf"
                   :counter="10"
                   label="CPF"
                   required
@@ -40,7 +40,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="email"
+                  v-model="usuario.email"
                   :counter="10"
                   label="Email"
                   required
@@ -48,13 +48,15 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-text-field
-                  v-model="telefone"
+                  v-model="usuario.telefone"
                   :counter="10"
                   label="Telefone"
                   required
                 ></v-text-field>
               </v-col>
-              <slot></slot>
+               <v-btn color="success" class="btn" @click="criarUsuario">
+                Cadastrar
+              </v-btn>
               <v-btn class="btn" color="red" dark @click.prevent="limparForm">Limpar</v-btn>
             </v-row>
           </v-container>
@@ -64,31 +66,36 @@
 </template>
 
 <script>
-import { mapFields } from "@/helpers.js";
+import { api } from '@/services';
 
 export default {
   name:"FuncionarioFrom",
   data(){
     return {
       show1: false,
-      limpar: ""
+      limpar: "",
+      erros: [],
+      usuario: {
+        id: "",
+        nome: "",
+        login: "",
+        senha: "",
+        cpf: "",
+        email: "",
+        telefone: ""
+      },
     } 
   },
-  computed:{
-    ...mapFields({
-      fields: [
-       "nome",
-       "login",
-       "senha", 
-       "cpf", 
-       "email", 
-       "telefone"
-      ],
-      base: "usuario",
-      mutation: "UPDATE_USUARIO"
-    })
-  },
   methods:{
+    async criarUsuario(){
+      try{
+        await api.post("/funcionario", this.usuario)
+        await this.$router.push({name:"home"});
+      }
+      catch(erro){
+       this.erros.push(erro.response.data.message)
+      }
+    },
     limparForm(){
       this.nome = this.limpar
       this.login = this.limpar
@@ -98,9 +105,6 @@ export default {
       this.telefone = this.limpar
     }
   },
-  created(){
-    this.senha = this.limpar
-  }
 }
 </script>
 
