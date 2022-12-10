@@ -7,7 +7,7 @@
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="nome"
-                  :counter="10"
+                  :counter="100"
                   label="Nome Completo"
                   required
                 ></v-text-field>
@@ -15,7 +15,7 @@
                <v-col cols="12" md="6">
                 <v-text-field
                   v-model="login"
-                  :counter="10"
+                  :counter="100"
                   label="Nome de login"
                   required
                 ></v-text-field>
@@ -33,7 +33,7 @@
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="cpf"
-                  :counter="10"
+                  :counter="14"
                   label="CPF"
                   required
                 ></v-text-field>
@@ -41,7 +41,7 @@
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="email"
-                  :counter="10"
+                  :counter="100"
                   label="Email"
                   required
                 ></v-text-field>
@@ -49,7 +49,7 @@
               <v-col cols="12" md="6">
                 <v-text-field
                   v-model="telefone"
-                  :counter="10"
+                  :counter="14"
                   label="Telefone"
                   required
                 ></v-text-field>
