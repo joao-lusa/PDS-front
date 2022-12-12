@@ -67,7 +67,7 @@
                   v-for="exame in examesPrecifica" :key="exame.id"
                   >
                     <td>{{ exame.nome }}</td>
-                    <td>{{ `R$${exame.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` }}</td>
+                    <td>{{ `${exame.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}` }}</td>
                   </tr>
                   <tr>
                     <td>Valor Total</td>
