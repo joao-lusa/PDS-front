@@ -1,6 +1,6 @@
 <template>
  <v-container>
-    <h1>Editar exame {{exame.nome}}</h1>
+    <h1>Editar exame {{nome}}</h1>
     <v-card height="450" color="#F5F2F2" elevation="5" class="card">
         <v-form>
           <v-container>
@@ -36,8 +36,8 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="12">
-                <v-btn color="#E7B126" class="btn" @click="atualizarExames">
-                  Cadastrar
+                <v-btn color="#E7B126" dark class="btn" @click="atualizarExames">
+                  Editar
                 </v-btn>
               </v-col>
             </v-row>
@@ -62,12 +62,14 @@ export default {
         sigla: "",
         idFuncionario: window.localStorage.id,
       },
+      nome: "",
       erros: []
     };
   },
   methods: {
     getExames(){
       api.get(`/exames/${window.localStorage.idExame}`).then(response =>{
+        this.nome = response.data.nome
         this.exame.nome = response.data.nome;
         this.exame.preco = response.data.preco;
         this.exame.sigla = response.data.sigla;
@@ -84,8 +86,8 @@ export default {
     }
   },
   created(){
-    this.getExames()
-  }
+    this.getExames();
+  },
 }
 </script>
 
